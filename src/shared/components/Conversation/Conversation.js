@@ -29,6 +29,7 @@ export const Conversation = ({
   const scrollRef = useRef();
   const { sendRequest } = useHttpClient();
   const dispatch = useDispatch();
+  console.log('conversation is running');
 
   useEffect(() => {
     const request = async () => {

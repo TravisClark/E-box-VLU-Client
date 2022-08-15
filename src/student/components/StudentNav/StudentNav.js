@@ -36,7 +36,7 @@ function Navbar() {
   return (
     <nav  >
       <Container
-        className={`fixed flex z-30 w-screen justify-around p-4 items-center transition duration-500 drop-shadow-md sm:px-20 ${
+        className={`relative bg-black flex z-30 w-screen justify-around p-4 items-center transition duration-500 drop-shadow-md sm:px-20 lg:fixed ${
           changeBgColor && "bg-white"
         }  md:px-0 sm:min-w-full`}
       >
@@ -44,7 +44,7 @@ function Navbar() {
           <img src={logo} alt=''/>
           <Link
             className={`font-bold text-2xl transition duration-500 whitespace-nowrap ${
-              changeBgColor && !navbarIsOpen ? "text-black" : "text-white"
+              changeBgColor && !navbarIsOpen ? "" : "text-white"
             }`}
             to={"/E-boxVLU"}
           >

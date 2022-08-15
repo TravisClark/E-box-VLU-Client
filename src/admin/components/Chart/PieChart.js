@@ -15,7 +15,6 @@ const renderCustomizedLabel = ({
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
-  // console.log(payload)
   return (
     <text
       x={x}
@@ -30,7 +29,6 @@ const renderCustomizedLabel = ({
 };
 
 const CustomTooltip = ({ active, payload, label }) => {
-  console.log(payload);
 
   if (active && payload && payload.length) {
     return (
@@ -40,34 +38,12 @@ const CustomTooltip = ({ active, payload, label }) => {
           className={`w-4 h-4 rounded-md`}
           style={{ backgroundColor: `${payload[0].payload.fill}` }}
         ></div>
-        {/* <p className="intro">{getIntroOfPage(label)}</p> */}
-        {/* <p className="desc">Anything you want can be displayed here.</p> */}
       </div>
     );
   }
 
   return null;
 };
-
-// const renderCustomizedLabelList = (props) => {
-//   const { x, y, width, height, value } = props;
-//   const radius = 100;
-
-//   return (
-//     <g>
-//       <circle cx='50%' cy='50%' r={radius} fill="#8884d8" />
-//       <text
-//         x={x + width / 2}
-//         y={y - radius}
-//         fill="#fff"
-//         textAnchor="middle"
-//         dominantBaseline="middle"
-//       >
-//         {value}
-//       </text>
-//     </g>
-//   );
-// };
 
 export const Chart = ({ valuesOfChart, colors }) => {
   return (
