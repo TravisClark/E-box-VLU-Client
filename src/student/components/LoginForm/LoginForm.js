@@ -54,6 +54,7 @@ function LoginForm() {
       <Container className="absolute min-w-full min-h-full p-0 top-0 flex items-center justify-center">
         <div
           className={`absolute w-full h-full flex items-center justify-center lg:w-fit lg:h-fit`}
+          style={{minHeight: '550px'}}
         >
           <div className="absolute top-0 bg-black w-full h-full opacity-70 lg:rounded"></div>
           <div className="flex flex-col space-y-8 w-2/3 z-10 lg:w-96 lg:px-10 lg:py-10">
