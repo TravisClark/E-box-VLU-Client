@@ -16,8 +16,7 @@ const Login = React.lazy(() => import("./student/pages/Login"));
 const Ebox = React.lazy(() => import("./student/pages/Ebox"));
 const PageNotFound = React.lazy(() => import("./student/pages/PageNotFound"));
 const ViewQuestions = React.lazy(() => import("./student/pages/ViewQuestions"));
-const AddUser = React.lazy(() => import("./admin/pages/AddUser"))
-
+const AddUser = React.lazy(() => import("./admin/pages/AddUser"));
 
 function App() {
   const { isLoggedIn } = useSelector((state) => state.auth);
@@ -32,12 +31,11 @@ function App() {
     account?.role_name === Roles.assistant;
 
   return (
-    
     <Layout>
       <Suspense
         fallback={
           <div className="centered min-h-screen">
-            <LoadingDot className='fixed z-50'/>
+            <LoadingDot className="fixed z-50" />
           </div>
         }
       >
@@ -62,7 +60,9 @@ function App() {
               <Route path="/E-boxVLU/change-password" exact>
                 <ChangePassword />
               </Route>
-
+              <Route path="*">
+                <PageNotFound />
+              </Route>
               {accessConditions && (
                 <>
                   <Route path="/E-boxVLU/admin/dashboard">
