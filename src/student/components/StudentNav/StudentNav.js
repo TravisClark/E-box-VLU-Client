@@ -36,15 +36,15 @@ function Navbar() {
   return (
     <nav  >
       <Container
-        className={`relative bg-black flex z-30 w-screen justify-around p-4 items-center transition duration-500 drop-shadow-md sm:px-20 lg:fixed ${
-          changeBgColor && "bg-white"
+      className={`relative  flex z-30 w-screen justify-around p-4 items-center transition duration-500 drop-shadow-md sm:px-20 lg:fixed ${
+          changeBgColor ? "bg-white" : 'bg-black lg:bg-transparent'
         }  md:px-0 sm:min-w-full`}
       >
         <div className="flex space-x-4 items-center z-50">
           <img src={logo} alt=''/>
           <Link
             className={`font-bold text-2xl transition duration-500 whitespace-nowrap ${
-              changeBgColor && !navbarIsOpen ? "" : "text-white"
+              changeBgColor && !navbarIsOpen ? "text-black" : "text-white"
             }`}
             to={"/E-boxVLU"}
           >
