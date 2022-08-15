@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/E-box-VLU-Client/static/css/main.c2a76b37.css",
+    "main.js": "/E-box-VLU-Client/static/js/main.67482805.js",
+    "static/js/134.3ade4ae8.chunk.js": "/E-box-VLU-Client/static/js/134.3ade4ae8.chunk.js",
+    "static/css/362.d3333a56.chunk.css": "/E-box-VLU-Client/static/css/362.d3333a56.chunk.css",
+    "static/js/362.93022379.chunk.js": "/E-box-VLU-Client/static/js/362.93022379.chunk.js",
+    "static/js/900.bcb2c3fd.chunk.js": "/E-box-VLU-Client/static/js/900.bcb2c3fd.chunk.js",
+    "static/css/828.2d56b134.chunk.css": "/E-box-VLU-Client/static/css/828.2d56b134.chunk.css",
+    "static/js/828.87a533bc.chunk.js": "/E-box-VLU-Client/static/js/828.87a533bc.chunk.js",
+    "static/js/798.9a49c0eb.chunk.js": "/E-box-VLU-Client/static/js/798.9a49c0eb.chunk.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/E-box-VLU-Client/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/[VLU] VAN LANG UNIVERSITY CAMPUS TOUR _ 2021 (online-video-cutter.com).mp4": "/E-box-VLU-Client/static/media/[VLU] VAN LANG UNIVERSITY CAMPUS TOUR _ 2021 (online-video-cutter.com).9cdd7759ceff04344c2a.mp4",
+    "static/media/school.png": "/E-box-VLU-Client/static/media/school.4301625276ec950bc59d.png",
+    "static/media/background-student.jpg": "/E-box-VLU-Client/static/media/background-student.9ebc342258e5542c37e0.jpg",
+    "static/media/u48.png": "/E-box-VLU-Client/static/media/u48.524576c6c8ea02e39294.png",
+    "static/media/description.jpg": "/E-box-VLU-Client/static/media/description.1dbbacc9c7dd8a606aa0.jpg",
+    "static/media/IT_Icon.png": "/E-box-VLU-Client/static/media/IT_Icon.4e8d10729798a4ff9180.png",
+    "index.html": "/E-box-VLU-Client/index.html",
+    "main.c2a76b37.css.map": "/E-box-VLU-Client/static/css/main.c2a76b37.css.map",
+    "main.67482805.js.map": "/E-box-VLU-Client/static/js/main.67482805.js.map",
+    "134.3ade4ae8.chunk.js.map": "/E-box-VLU-Client/static/js/134.3ade4ae8.chunk.js.map",
+    "362.d3333a56.chunk.css.map": "/E-box-VLU-Client/static/css/362.d3333a56.chunk.css.map",
+    "362.93022379.chunk.js.map": "/E-box-VLU-Client/static/js/362.93022379.chunk.js.map",
+    "900.bcb2c3fd.chunk.js.map": "/E-box-VLU-Client/static/js/900.bcb2c3fd.chunk.js.map",
+    "828.2d56b134.chunk.css.map": "/E-box-VLU-Client/static/css/828.2d56b134.chunk.css.map",
+    "828.87a533bc.chunk.js.map": "/E-box-VLU-Client/static/js/828.87a533bc.chunk.js.map",
+    "798.9a49c0eb.chunk.js.map": "/E-box-VLU-Client/static/js/798.9a49c0eb.chunk.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/E-box-VLU-Client/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c2a76b37.css",
+    "static/js/main.67482805.js"
+  ]
+}
