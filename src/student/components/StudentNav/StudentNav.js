@@ -36,7 +36,7 @@ function Navbar() {
   return (
     <nav  >
       <Container
-      className={`relative  flex z-30 w-screen justify-around p-4 items-center transition duration-500 drop-shadow-md sm:px-20 lg:fixed ${
+      className={`relative flex z-30 w-screen justify-around p-4 items-center transition duration-500 drop-shadow-md sm:px-20 lg:fixed ${
           changeBgColor ? "bg-white" : 'bg-black lg:bg-transparent'
         }  md:px-0 sm:min-w-full`}
       >

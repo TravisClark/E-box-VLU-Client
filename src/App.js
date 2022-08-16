@@ -19,16 +19,11 @@ const ViewQuestions = React.lazy(() => import("./student/pages/ViewQuestions"));
 const AddUser = React.lazy(() => import("./admin/pages/AddUser"));
 
 function App() {
-  const { isLoggedIn } = useSelector((state) => state.auth);
-  const { account } = useSelector((state) => state.auth);
   const location = useLocation();
+  const { isInAdminMode } = useSelector((state) => state.ui);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-  const accessConditions =
-    account?.role_name === Roles.admin ||
-    account?.role_name === Roles.supervisor ||
-    account?.role_name === Roles.assistant;
 
   return (
     <Layout>
@@ -46,46 +41,48 @@ function App() {
           <Route path="/E-boxVLU" exact>
             <Ebox />
           </Route>
-          <Route path="/E-boxVLU/login">
+          <Route path="/E-boxVLU/login" exact>
             <Login />
           </Route>
-          {isLoggedIn && (
+          <Route path="/E-boxVLU/notExist" exact>
+            <PageNotFound />
+          </Route>
+
+          {/* Logged in access */}
+          <LoggedInRoute path="/E-boxVLU/Home" exact>
+            <ViewQuestions />
+          </LoggedInRoute>
+          <LoggedInRoute path="/E-boxVLU/Home/question/:questionId">
+            <QuestionDetail />
+          </LoggedInRoute>
+          <LoggedInRoute path="/E-boxVLU/change-password" exact>
+            <ChangePassword />
+          </LoggedInRoute>
+
+          {/* Admin access */}
+          {isInAdminMode && (
             <>
-              <Route path="/E-boxVLU/Home" exact>
-                <ViewQuestions />
-              </Route>
-              <Route path="/E-boxVLU/Home/question/:questionId">
-                <QuestionDetail />
-              </Route>
-              <Route path="/E-boxVLU/change-password" exact>
-                <ChangePassword />
-              </Route>
-              <Route path="*">
-                <PageNotFound />
-              </Route>
-              {accessConditions && (
-                <>
-                  <Route path="/E-boxVLU/admin/dashboard">
-                    <Dashboard />
-                  </Route>
-                  <Route path="/E-boxVLU/admin/users" exact>
-                    <Users />
-                  </Route>
-                  <Route path="/E-boxVLU/admin/users/add">
-                    <AddUser />
-                  </Route>
-                  <Route path="/E-boxVLU/admin/questions">
-                    <QuestionManagement />
-                  </Route>
-                  <Route path="/E-boxVLU/admin/chat">
-                    <Chat />
-                  </Route>
-                </>
-              )}
+              <AdminRoute path="/E-boxVLU/admin/dashboard" exact>
+                <Dashboard />
+              </AdminRoute>
+              <AdminRoute path="/E-boxVLU/admin/users" exact>
+                <Users />
+              </AdminRoute>
+              <AdminRoute path="/E-boxVLU/admin/users/add" exact>
+                <AddUser />
+              </AdminRoute>
+              <AdminRoute path="/E-boxVLU/admin/questions" exact>
+                <QuestionManagement />
+              </AdminRoute>
+              <AdminRoute path="/E-boxVLU/admin/chat" exact>
+                <Chat />
+              </AdminRoute>
             </>
           )}
+
+          {/* Random path */}
           <Route path="*">
-            <PageNotFound />
+            <Redirect to="/E-boxVLU/notExist" />
           </Route>
         </Switch>
       </Suspense>
@@ -93,3 +90,44 @@ function App() {
   );
 }
 export default App;
+
+function LoggedInRoute({ children, ...rest }) {
+  const { account } = useSelector((state) => state.auth);
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        account.role_name ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/E-boxVLU/notExist",
+              state: { from: location },
+            }}
+          />
+        )
+      }
+    />
+  );
+}
+function AdminRoute({ children, ...rest }) {
+  const { account } = useSelector((state) => state.auth);
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        account.role_name !== Roles.student ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/E-boxVLU/notExist",
+              state: { from: location },
+            }}
+          />
+        )
+      }
+    />
+  );
+}
