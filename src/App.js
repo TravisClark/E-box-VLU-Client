@@ -58,9 +58,6 @@ function App() {
           <LoggedInRoute path="/E-boxVLU/change-password" exact>
             <ChangePassword />
           </LoggedInRoute>
-          <Route path="*">
-            <Redirect to="/E-boxVLU/notExist" />
-          </Route>
           {/* Admin access */}
           {isInAdminMode && (
             <>
