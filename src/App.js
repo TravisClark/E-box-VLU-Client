@@ -58,7 +58,9 @@ function App() {
           <LoggedInRoute path="/E-boxVLU/change-password" exact>
             <ChangePassword />
           </LoggedInRoute>
-
+          <Route path="*">
+            <Redirect to="/E-boxVLU/notExist" />
+          </Route>
           {/* Admin access */}
           {isInAdminMode && (
             <>
@@ -92,12 +94,13 @@ function App() {
 export default App;
 
 function LoggedInRoute({ children, ...rest }) {
-  const { account } = useSelector((state) => state.auth);
+  const token = JSON.parse(sessionStorage.getItem('token'));
+  
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        account.role_name ? (
+        token ? (
           children
         ) : (
           <Redirect
