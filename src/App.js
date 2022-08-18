@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Route, Switch, Redirect, useLocation } from "react-router-dom";
-
+import jwt_decode from "jwt-decode";
 import { Chat } from "./admin/pages/Chat";
 import Dashboard from "./admin/pages/Dashboard";
 import QuestionManagement from "./admin/pages/QuestionManagement";
@@ -20,11 +20,11 @@ const AddUser = React.lazy(() => import("./admin/pages/AddUser"));
 
 function App() {
   const location = useLocation();
-  const { isInAdminMode } = useSelector((state) => state.ui);
+  // const { isInAdminMode } = useSelector((state) => state.ui);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-
+  // console.log(role_name)
   return (
     <Layout>
       <Suspense
@@ -58,26 +58,23 @@ function App() {
           <LoggedInRoute path="/E-boxVLU/change-password" exact>
             <ChangePassword />
           </LoggedInRoute>
+
           {/* Admin access */}
-          {isInAdminMode && (
-            <>
-              <AdminRoute path="/E-boxVLU/admin/dashboard" exact>
-                <Dashboard />
-              </AdminRoute>
-              <AdminRoute path="/E-boxVLU/admin/users" exact>
-                <Users />
-              </AdminRoute>
-              <AdminRoute path="/E-boxVLU/admin/users/add" exact>
-                <AddUser />
-              </AdminRoute>
-              <AdminRoute path="/E-boxVLU/admin/questions" exact>
-                <QuestionManagement />
-              </AdminRoute>
-              <AdminRoute path="/E-boxVLU/admin/chat" exact>
-                <Chat />
-              </AdminRoute>
-            </>
-          )}
+          <AdminRoute path="/E-boxVLU/admin/dashboard" exact>
+            <Dashboard />
+          </AdminRoute>
+          <AdminRoute path="/E-boxVLU/admin/users" exact>
+            <Users />
+          </AdminRoute>
+          <AdminRoute path="/E-boxVLU/admin/users/add" exact>
+            <AddUser />
+          </AdminRoute>
+          <AdminRoute path="/E-boxVLU/admin/questions" exact>
+            <QuestionManagement />
+          </AdminRoute>
+          <AdminRoute path="/E-boxVLU/admin/chat" exact>
+            <Chat />
+          </AdminRoute>
 
           {/* Random path */}
           <Route path="*">
@@ -91,8 +88,7 @@ function App() {
 export default App;
 
 function LoggedInRoute({ children, ...rest }) {
-  const token = JSON.parse(sessionStorage.getItem('token'));
-  
+  const token = JSON.parse(sessionStorage.getItem("token"));
   return (
     <Route
       {...rest}
@@ -112,12 +108,13 @@ function LoggedInRoute({ children, ...rest }) {
   );
 }
 function AdminRoute({ children, ...rest }) {
-  const { account } = useSelector((state) => state.auth);
+  const token = JSON.parse(sessionStorage.getItem("token"));
+  const { role_name } = jwt_decode(token);
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        account.role_name !== Roles.student ? (
+        role_name !== Roles.student ? (
           children
         ) : (
           <Redirect
