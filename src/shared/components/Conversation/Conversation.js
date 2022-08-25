@@ -29,7 +29,6 @@ export const Conversation = ({
   const scrollRef = useRef();
   const { sendRequest } = useHttpClient();
   const dispatch = useDispatch();
-  console.log('conversation is running');
 
   useEffect(() => {
     const request = async () => {
@@ -128,7 +127,7 @@ export const Conversation = ({
           conversations.length > 0 && (
             <>
               <div
-                className="flex flex-col space-y-2 w-32 min-w-full h-full overflow-hidden hover:overflow-auto"
+                className="flex flex-col space-y-2 w-32 min-w-full h-full max-h-96 overflow-hidden hover:overflow-auto"
                 style={{minHeight }}
               >
                 {conversations.map(function (conversation) {
