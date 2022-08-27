@@ -20,10 +20,9 @@ function SideNav() {
   return (
     <nav>
       <Container
-        className={`flex flex-col relative w-fit px-4 items-center bg-white z-20 transition duration-1000 ${
+        className={`flex flex-col relative w-fit px-4 items-center bg-white z-20 transition duration-1000 min-h-screen ${
           navbarIsOpen && "w-64"
         }`}
-        style={{minHeight:'884px'}}
       >
         {/* Mobile hamburger */}
         <div

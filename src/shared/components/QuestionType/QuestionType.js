@@ -5,6 +5,7 @@ import Requests from "../../api/Requests";
 import useHttpClient from "../../hooks/http-hook";
 import { itemActions } from "../../store/item-slice";
 import { pageActions } from "../../store/page-slice";
+import { uiActions } from "../../store/ui-slice";
 import selectStyles from "../UI/Select.module.css";
 export const QuestionType = ({ className, isSorting }) => {
   const { sendRequest } = useHttpClient();
@@ -34,6 +35,7 @@ export const QuestionType = ({ className, isSorting }) => {
             typeList: response.map((item) => item.type_name),
           })
         );
+        dispatch(uiActions.setSpinnerState({ type: "DONE" }));
       } catch (error) {}
     };
     request();

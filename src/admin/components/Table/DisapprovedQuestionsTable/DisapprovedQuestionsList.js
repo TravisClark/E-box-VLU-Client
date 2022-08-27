@@ -63,7 +63,7 @@ export const DisapprovedQuestionList = (props) => {
       {questions.length === 0 && !isSpinnerLoading && (
         <div className="relative h-10">
           <div className="h-20 absolute whitespace-nowrap top-4">
-            There is no questions in this list
+          Không có câu hỏi nào phù hợp.
           </div>
         </div>
       )}
