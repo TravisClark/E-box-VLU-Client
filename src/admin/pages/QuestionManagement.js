@@ -33,7 +33,7 @@ function QuestionManagement() {
   const { successNotification } = useSelector((state) => state.ui);
   const [firstLoading, setFirstLoading] = useState(false);
   const { newSortType, itemSearching } = useSelector((state) => state.item);
-  const { isSpinnerLoading } = useSelector((state) => state.ui);
+  const { isSpinnerLoading, } = useSelector((state) => state.ui);
 
   useEffect(() => {
     try {
@@ -43,12 +43,12 @@ function QuestionManagement() {
           Requests.fetchQuestionList
         );
         setQuestions(response);
-        dispatch(uiActions.setSpinnerState({ type: "DONE" }));
+       
         setFirstLoading(true);
       };
       fetchQuestionList();
     } catch (error) {}
-  }, [sendRequest, successNotification.refresh, dispatch]);
+  }, [sendRequest, successNotification.refresh]);
 
   useEffect(() => {
     const sortedQuestions = questions.filter((question) =>
@@ -61,7 +61,8 @@ function QuestionManagement() {
             question.type_name.includes(newSortType)
           )
     );
-  }, [questions, newSortType, itemSearching]);
+    
+  }, [questions, newSortType, itemSearching, dispatch]);
 
   useEffect(() => {
     dispatch(
@@ -69,6 +70,7 @@ function QuestionManagement() {
         items: questionsDisplay,
       })
     );
+    dispatch(uiActions.setSpinnerState({ type: "DONE" }));
   }, [questionsDisplay, dispatch]);
 
   useEffect(() => {

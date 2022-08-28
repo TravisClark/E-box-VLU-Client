@@ -34,7 +34,7 @@ const useHttpClient = () => {
         return responseData;
       } catch (error) {
         let err = error.toString().replace("Error:", "");
-        if(err === 'Type Failed to fetch'){
+        if(err === 'Type Failed to fetch' || err === 'Error'){
           err = ''
         }
         dispatch(uiActions.catchError({ message: err }));

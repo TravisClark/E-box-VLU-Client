@@ -90,13 +90,15 @@ function NewQuestionList() {
           <LoadingDot className="pt-20" />
         </tr>
       )}
-      {questions.length === 0 && !loadingType && (
-        <tr className="relative h-10">
-          <td className="h-20 absolute whitespace-nowrap top-4">
-            Không có câu hỏi nào phù hợp trong bảng
-          </td>
-        </tr>
-      )}
+      {questions.length === 0 &&
+        !loadingType &&
+        setTimeout(() => {
+          <tr className="relative h-10">
+            <td className="h-20 absolute whitespace-nowrap top-4">
+              Không có câu hỏi nào phù hợp trong bảng
+            </td>
+          </tr>;
+        }, 1000)}
       {loadingType !== LoadingList.fetchQuestionList && questions}
     </tbody>
   );
