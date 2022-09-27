@@ -65,7 +65,7 @@ function ChangePasswordForm() {
                 type="password"
                 className="p-4 bg-gray-700 rounded-md text-white outline-none"
                 placeholder="Nhập mật khẩu cũ"
-                ref={oldPwRef}
+                // ref={oldPwRef}
               />
             </div>
             <div className="flex flex-col space-y-2">
